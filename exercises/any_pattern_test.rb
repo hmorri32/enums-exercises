@@ -16,46 +16,42 @@ class AnyPatternTest < Minitest::Test
   def test_does_not_have_any_zeros
     numbers = [3, 1, 3, 2, 4, 9, 8]
     has_zero = false
-    numbers.each do |number|
-      # Your code goes here
-    end
+    numbers.each {|number|has_zero = true if number.zero?}
     refute has_zero
   end
 
   def test_has_at_least_one_alice
-    skip
     names = ["Bill", "Bob", "Burton", "Alice", "Brandon"]
     has_alice = false
-    # Your code goes here
+    names.each {|name| has_alice = true if names.include?(name)}
     assert has_alice
   end
 
   def test_no_alices
-    skip
     names = ["Chuck", "Charlene", "Cory", "Chris", "Carl"]
-    # Your code goes here
+    has_alice = false
+    names.each {|name|has_alice = true if name == "Alice"}
     refute has_alice
   end
 
   def test_has_a_multi_word_phrase
-    skip
     phrases = ["Sure!", "OK.", "I have no idea.", "Really?Whatever."]
-    # Your code goes here
+    has_multi_word_phrase = false
+    phrases.each {|phrase| has_multi_word_phrase = true if phrase.split(' ').length > 0}
     assert has_multi_word_phrase
   end
 
   def test_no_monkeys
-    skip
     animals = ["elephant", "hippo", "jaguar", "python"]
-    # Your code goes here
+    has_monkeys = false
+    animals.each {|animal| has_monkeys = true if animal == "monkey"}
     refute has_monkeys
   end
 
   def test_no_multiples_of_five
-    skip
     numbers = [3, 1, 3, 2, 4, 9, 8]
-    # Your code goes here
+    multiples_of_5 = false
+    numbers.each {|number| multiples_of_5 = true if number % 5 == 0}
     refute multiples_of_5
   end
-
 end
